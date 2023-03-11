@@ -4,6 +4,7 @@
         private $data;
         const VERSION = 1.01;
         private static $counter = 0;
+        private $id = 35135153151;
 
         public function __construct($data){
             $this-> data = $data;
@@ -22,11 +23,7 @@
             $this -> data = $data;
         }
 
-        public function __destruct(){
-            static::$counter--;
-            echo "--- dtor ", __CLASS__ . "\n";
-            
-        }
+        
 
         public function __toString(){
             return "Calss: " . __CLASS__ .
@@ -49,6 +46,21 @@
         }
         public function __clone(){
             echo "clone call" ."\n" ;
+        }
+        //serialize
+        public function __sleep(){
+            echo "__sleep called" . "\n";
+            return ("data" );
+        }
+        public function __wakeup(){
+            echo "wakeup called" . "\n";
+            $this -> id =0;
+        }
+
+        public function __destruct(){
+            static::$counter--;
+            echo "--- dtor ", __CLASS__ . "\n";
+            
         }
     }
 

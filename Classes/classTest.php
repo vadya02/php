@@ -21,7 +21,18 @@
     echo $a. "\n";
     $a->__clone();
 
+    $str_a = serialize($a);
+    print_r($str_a);
+    $fd = fopen("a.data.txt", "w+");
+    fwrite($fd, $str_a);
+    fclose($fd);
 
+
+    $fd = fopen("a.data.txt", "r");
+    $str_c = fread($fd, filesize("a.data.txt"));
+    fclose($fd);
+    $c = unserialize(($a));
+    echo $a;
 
 
 
