@@ -3,6 +3,6 @@
 $i =0;
  phpinfo();
  echo $i;
-
+ echo "sdvfv";
  
 ?>
